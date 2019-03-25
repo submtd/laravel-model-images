@@ -8,6 +8,7 @@
         }
     ],
     "require": {
+        "spatie/image": "^1.5",
         "submtd/laravel-global-variables": "^1.0",
         "submtd/laravel-model-variables": "^1.0"
     },
