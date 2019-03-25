@@ -1,0 +1,23 @@
+{
+    "name": "submtd/laravel-model-images",
+    "description": "Attach images to models.",
+    "authors": [
+        {
+            "name": "Steve Harmeyer",
+            "email": "harmeyersteve@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Submtd\\LaravelModelImages\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Submtd\\LaravelModelImages\\Providers\\LaravelModelImagesServiceProvider"
+            ]
+        }
+    }
+}
