@@ -11,6 +11,8 @@ class ImageVariation extends Model
         'image_path',
     ];
 
+    protected $table = 'image_variations';
+
     public static function boot() {
         parent::boot();
         static::deleting(function($model) {
@@ -20,6 +22,6 @@ class ImageVariation extends Model
 
     public function image()
     {
-        return $this->belongsTo(config('laravel-model-images.imageModel', Image::class));
+        return $this->belongsTo(config('laravel-model-images.imageModel', Image::class), 'id', 'image_id');
     }
 }

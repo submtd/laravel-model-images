@@ -14,6 +14,8 @@ class Image extends Model
         'weight',
     ];
 
+    protected $table = 'images';
+
     protected $with = [
         'variations',
     ];
@@ -33,6 +35,6 @@ class Image extends Model
 
     public function variations()
     {
-        return $this->hasMany(config('laravel-model-images.imageVariationModel', ImageVariation::class));
+        return $this->hasMany(config('laravel-model-images.imageVariationModel', ImageVariation::class), 'image_id', 'id');
     }
 }
