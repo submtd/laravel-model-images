@@ -11,7 +11,7 @@ trait HasImages
 {
     public function images()
     {
-        return $this->morphMany(Image::class, 'model');
+        return $this->morphMany(config('laravel-model-images.imageModel', Image::class), 'model');
     }
 
     public function addImage(UploadedFile $file, $title = null, $description = null, $weight = 0)

@@ -4,6 +4,7 @@ namespace Submtd\LaravelModelImages\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Storage;
 
 class Image extends Model
 {
@@ -23,19 +24,15 @@ class Image extends Model
         static::addGlobalScope('imagesByWeight', function (Builder $builder) {
             $builder->orderBy('weight')->orderBy('created_at');
         });
+        static::deleting(function ($model) {
+            foreach($model->variations as $variation) {
+                $variation->delete();
+            }
+        });
     }
 
     public function variations()
     {
-        return $this->hasMany(ImageVariation::class);
+        return $this->hasMany(config('laravel-model-images.imageVariationModel', ImageVariation::class));
     }
-
-    public function delete() {
-        foreach($this->variations as $variation) {
-            @unlink(storage_path('app/public') . '/' . $variation->image_path);
-            $variation->delete();
-        }
-        parent::delete();
-    }
-
 }

@@ -11,8 +11,15 @@ class ImageVariation extends Model
         'image_path',
     ];
 
+    public static function boot() {
+        parent::boot();
+        static::deleting(function($model) {
+            @unlink(storage_path('app/public') . '/' . $model->image_path);
+        });
+    }
+
     public function image()
     {
-        return $this->belongsTo(Image::class);
+        return $this->belongsTo(config('laravel-model-images.imageModel', Image::class));
     }
 }

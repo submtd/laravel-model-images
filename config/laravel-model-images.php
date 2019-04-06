@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'imageModel' => Submtd\LaravelModelImages\Models\Image::class,
+    'imageVariationModel' => Submtd\LaravelModelImages\Models\ImageVariation::class,
     'allowedMimes' => 'jpeg,png,jpg,gif,svg',
     'maxFileSize' => 10240,
     'imagePath' => storage_path('app/public/images'),
