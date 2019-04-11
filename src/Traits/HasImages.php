@@ -13,7 +13,7 @@ trait HasImages
 {
     public function images()
     {
-        return $this->hasMany(Image::class);
+        return $this->morphMany(Image::class, 'model');
     }
 
     public function addImage(UploadedFile $file, int $weight = 0)

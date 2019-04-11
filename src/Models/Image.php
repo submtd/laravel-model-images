@@ -10,4 +10,9 @@ class Image extends Model
         'image',
         'weight',
     ];
+
+    public function model()
+    {
+        return $this->morphTo();
+    }
 }
